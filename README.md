@@ -1,9 +1,8 @@
-# Quete_decoupage_reseau_IP  
+# Quête découpage de réseau IP  
 
   Une société fictive a 4 pôles informatiques. Le réseau est en 172.16.1.0/24.
 Découper ce réseau de 2 manières, symétrique et asymétrique, pour que chaque pôle ci-dessous puissent avoir assez d'adresse pour chaque équipement.
 
-Le Pôle informatique (6 bureaux, environ 50 équipements au total)
 Le Pôle développement (6 bureaux, environ 12 équipements au total)
 Le Pôle Administratif (4 bureaux, environ 20 équipements au total)
 Le Pôle Technicien (4 bureaux, environ 15 équipements au total)

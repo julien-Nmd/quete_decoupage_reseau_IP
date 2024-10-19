@@ -33,25 +33,25 @@ Les sous-réseaux seront dans cette ordre :
 Pour le réseau 172.16.1.0/24, on a donc les 4 sous-réseaux suivants :
   
     Sous-réseau 1 : Pôle Info  
-    Adresse de réseau : 172.16.1.0/  
+    Adresse de réseau : 172.16.1.0/26  
     Début de plage IP disponible : 172.16.1.1  
     Fin de plage IP disponible : 172.16.1.62  
     Adresse de broadcast : 172.16.1.63    
   
     Sous-réseau 2 : Pôle Admin.  
-    Adresse de réseau : 172.16.1.64/  
+    Adresse de réseau : 172.16.1.64/27  
     Début de plage IP disponible : 172.16.1.65  
     Fin de plage IP disponible : 172.16.1.94  
     Adresse de broadcast : 172.16.1.95  
   
     Sous-réseau 3 : Pôle Tech.  
-    Adresse de réseau : 172.16.1.96/  
+    Adresse de réseau : 172.16.1.96/27  
     Début de plage IP disponible : 172.16.1.97  
     Fin de plage IP disponible : 172.16.1.126  
     Adresse de broadcast : 172.16.1.127  
   
     Sous-réseau 4 : Pôle Dév.  
-    Adresse de réseau : 172.16.1.128/  
+    Adresse de réseau : 172.16.1.128/28  
     Début de plage IP disponible : 172.16.1.129  
     Fin de plage IP disponible : 172.16.1.142  
     Adresse de broadcast : 172.16.1.143  
@@ -60,15 +60,54 @@ Donc cela donne :
 
 | | Adresse de Réseau | Adresse de Broadcast | Adresse de début de plage | Adresse de fin de plage | Nbre hôtes dispos |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **Pôle Info.** | 172.16.1.64/ | 172.16.1.95 | 172.16.1.65 | 172.16.1.94 |62|
-| **Pôle Admin.** | 172.16.1.64/ | 172.16.1.95 | 172.16.1.65 | 172.16.1.94 |30|
-| **Pôle Tech.** | 172.16.1.96/ | 172.16.1.127 | 172.16.1.97 | 172.16.1.126 |30|
-| **Pôle Dév.** | 172.16.1.128/ | 172.16.1.143 | 172.16.1.129 | 172.16.1.142 |14|  
+| **Pôle Info.** | 172.16.1.0/26 | 172.16.1.63 | 172.16.1.1 | 172.16.1.62 |62|
+| **Pôle Admin.** | 172.16.1.64/27 | 172.16.1.95 | 172.16.1.65 | 172.16.1.94 |30|
+| **Pôle Tech.** | 172.16.1.96/27 | 172.16.1.127 | 172.16.1.97 | 172.16.1.126 |30|
+| **Pôle Dév.** | 172.16.1.128/28 | 172.16.1.143 | 172.16.1.129 | 172.16.1.142 |14|  
 
 ## Découpage symétrique :  
+  
 Le Pôle ayant le plus gros besoin en nombre de poste est le pôle informatique (50 équipements), on va donc faire le découpage en fonction de ce pôle.  
 **2⁷ = 64** c'est la puissance de 2 supérieure au besoin la plus petite. <= 7 sera donc le nombre de bits hôte, le CIDR sera donc de **25** 
 On aura donc 64 adresses dispos par pôle, moins les adresse d'émission et de diffusion, celà fera **62 hôtes** dipos par pôle.  
+  
+Pour le réseau 172.16.1.0/24 on peut faire les 4 sous-réseaux suivants :  
+
+  
+    Sous réseau 1 : Pôle info.
+    Adresse de réseau :172.16.1.0/25  
+    Début de plage IP disponible : 172.16.1.1  
+    Fin de plage IP disponible : 172.16.1.62  
+    Adresse de broadcast : 172.16.1.63  
+
+    Sous réseau 2 : Pôle Admin.  
+    Adresse de réseau :172.16.1.64/25  
+    Début de plage IP disponible : 172.16.1.65  
+    Fin de plage IP disponible : 172.16.1.126  
+    Adresse de broadcast : 172.16.1.127  
+
+    Sous réseau 3 : Pôle Tech.  
+    Adresse de réseau :172.16.1.128/25  
+    Début de plage IP disponible : 172.16.1.129  
+    Fin de plage IP disponible : 172.16.1.190  
+    Adresse de broadcast : 172.16.1.191  
+
+    Sous réseau 4 : Pôle Dev.  
+    Adresse de réseau :172.16.1.192/25  
+    Début de plage IP disponible : 172.16.1.193  
+    Fin de plage IP disponible : 172.16.1.254  
+    Adresse de broadcast : 172.16.1.255  
+ 
+Donc cela donne :  
+
+| | Adresse de Réseau | Adresse de Broadcast | Adresse de début de plage | Adresse de fin de plage | Nbre hôtes dispos |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Pôle Info.** | 172.16.1.0/25 | 172.16.1.63 | 172.16.1.1 | 172.16.1.62 |62|
+| **Pôle Admin.** | 172.16.1.64/25 | 172.16.1.127 | 172.16.1.65 | 172.16.1.126 |62|
+| **Pôle Tech.** | 172.16.1.128/25 | 172.16.1.191 | 172.16.1.129 | 172.16.1.190 |62|
+| **Pôle Dév.** | 172.16.1.192/25 | 172.16.1.255 | 172.16.1.193 | 172.16.1.254 |62|  
+
+
 
 
 
